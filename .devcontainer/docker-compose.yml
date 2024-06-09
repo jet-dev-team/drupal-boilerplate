@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/opt/drupal:cached
+    command: apache2-foreground
+    ports:
+      - 8040:80
+    environment:
+      ENV_INDICATOR: "local"
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      DRUPAL_HASH_SALT: ${DRUPAL_HASH_SALT}
+      DRUSH_OPTIONS_URI: "http://localhost:8040"
+
+  db:
+    image: mysql/mysql-server:8.0
+    restart: unless-stopped
+    command: --max_allowed_packet=512M --transaction-isolation=READ-COMMITTED --disable_log_bin
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+
+volumes:
+  db:
+    driver: local
