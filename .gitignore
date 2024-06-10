@@ -1,1 +1,12 @@
 .DS_Store
+
+# Drupal specific files.
+# Look at example.gitignore from Drupal core for reference.
+drupal/web/core
+drupal/vendor/
+drupal/web/modules/contrib
+drupal/web/sites/*/settings.local.php
+drupal/web/sites/*/services*.yml
+drupal/web/sites/*/files
+drupal/web/sites/*/private
+drupal/web/sites/simpletest
