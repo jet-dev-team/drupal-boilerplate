@@ -10,7 +10,7 @@ composer install
 cd ..
 
 printf "\nInstall fresh site\n"
-drush si --account-name=admin --account-pass=drupal --site-name="Drupal Boilerplate" --db-url=mysql://drupal:drupal@db:3306/drupal -y
+drush si --account-name=drupal --account-pass=drupal --site-name="Drupal Boilerplate" --db-url=mysql://drupal:drupal@db:3306/drupal -y
 
 printf "\nInclude settings.local.php...\n"
 echo -e "\nif (file_exists(\$app_root . '/' . \$site_path . '/settings.local.php')) {\n  include \$app_root . '/' . \$site_path . '/settings.local.php';\n}" >> drupal/web/sites/default/settings.php
