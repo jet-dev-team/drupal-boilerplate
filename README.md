@@ -26,6 +26,12 @@ Ensure Docker and VS Code are installed on your system. Additionally, the Dev Co
 docker run --rm --interactive --tty --volume $PWD:/app composer create-project --ignore-platform-reqs drupal/recommended-project drupal
 ```
 
+In order to obtain specific Drupal version try the next command:
+
+```sh
+docker run --rm --interactive --tty --volume $PWD:/app composer create-project --ignore-platform-reqs drupal/recommended-project:10.3.5 drupal
+```
+
 4. Open the project with Remote Containers (use the Dev Containers: Reopen in Container command from the Command Palette). The system will automatically download all the dependencies and run the Drush installation script with the standard profile. This process may take a few minutes.
 
 5. After the installation, you can access your Drupal site at `http://localhost:8040`.
