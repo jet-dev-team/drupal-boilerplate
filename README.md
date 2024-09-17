@@ -30,6 +30,11 @@ docker run --rm --interactive --tty --volume $PWD:/app composer create-project -
 
 5. After the installation, you can access your Drupal site at `http://localhost:8040`.
 
+Admin user login: `drupal`
+Admin user password: `drupal`
+
+You can check installation options in the [.devcontainer/post-start--install.bash](.devcontainer/post-start--install.bash) file.
+
 ### Additional Tooling
 
 The Adminer interface for database management can be accessed at `http://localhost:8080` with the following credentials:
