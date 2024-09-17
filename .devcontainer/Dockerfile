@@ -1,4 +1,4 @@
-FROM drupal:10.2-php8.3-apache
+FROM drupal:11-php8.3-apache
 
 # Install dependencies and tools
 RUN apt-get update && apt-get install -y \
