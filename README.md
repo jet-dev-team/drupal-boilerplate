@@ -45,6 +45,18 @@ Admin user password: `drupal`
 
 You can check installation options in the [.devcontainer/post-start--install.bash](.devcontainer/post-start--install.bash) file.
 
+### Install Site from Configuration
+
+If you'd like to install your site using an existing configuration, please use the [.devcontainer/post-start--install-config.bash](.devcontainer/post-start--install-config.bash) script. You can configure this in [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) by modifying the `postStartCommand`.
+
+To install the site from configuration:
+
+1. Update the `postStartCommand` in `devcontainer.json`.
+2. Ensure you have an existing directory containing the configuration files.
+3. Confirm that you have a working `settings.php` file (refer to [`example.settings.php`](example.settings.php) if needed).
+4. Ensure your `settings.php` file contains a valid path to the `config_sync_directory`.
+5. Rebuild the container.
+
 ### Additional Tooling
 
 The Adminer interface for database management can be accessed at `http://localhost:8080` with the following credentials:
@@ -53,11 +65,3 @@ The Adminer interface for database management can be accessed at `http://localho
 - username: `drupal`
 - password: `drupal`
 - database: `drupal`
-
-## Important Note
-
-The current version of this boilerplate only includes a Drupal installation script. This means that rebuilding the Docker container will erase the database, resulting in a fresh Drupal installation. If you wish to preserve your changes, consider the following options:
-
-- Modify the installation script to prevent site installation and database erasure.
-- Manually export and import the database.
-- Write and execute a `post-install--db.sh` script that aligns with your development procedures (this is the recommended option).
